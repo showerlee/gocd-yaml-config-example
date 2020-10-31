@@ -13,29 +13,30 @@ pipelines:
       - build:
           clean_workspace: yes
           jobs:
-            Build-base-docker:
+            base:
               tasks:
                - exec:
-                   command: echo "Base image build is complete"
-            Build-app-docker:
+                   command: auto/build-base-image
+            app:
               tasks:
                - exec:
-                   command: echo "App image build is complete"
+                   command: auto/build-base-image
 
       - release:
+          clean_workspace: yes
           jobs:
-            Release-base-docker:
+            base:
               tasks:
                 - exec:
-                    command: echo "Base image release is complete"
-            Release-app-docker:
+                    command: auto/release-base-image
+            app:
               tasks:
                 - exec:
-                    command: echo "App image release is complete"
+                    command: auto/release-app-image
 
       - deploy:
           jobs:
-            Deploy:
+            app:
               tasks:
                 - exec:
-                    command: echo "Deployment is complete"
+                    command: auto/deploy
