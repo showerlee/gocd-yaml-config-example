@@ -1,18 +1,17 @@
+format_version: 9
 environments:
-  example:
-    environment_variables:
-      EXAMPLE_DEPLOYMENT: testing
+  default:
     pipelines:
-      - yaml-example
+      - example
 pipelines:
-  yamlpipe1:
-    group: simple
+  example:
+    group: example
     materials:
-      mygit:  # this is the name of material
-        # says about type of material and url at once
+      git:
         git: https://github.com/showerlee/gocd-yaml-config-example.git
     stages:
-      - Build:
+      - build:
+          clean_workspace: yes
           jobs:
             Build-base-docker:
               tasks:
@@ -23,7 +22,7 @@ pipelines:
                - exec:
                    command: echo "App image build is complete"
 
-      - Release:
+      - release:
           jobs:
             Release-base-docker:
               tasks:
@@ -34,7 +33,7 @@ pipelines:
                 - exec:
                     command: echo "App image release is complete"
 
-      - Deploy:
+      - deploy:
           jobs:
             Deploy:
               tasks:
