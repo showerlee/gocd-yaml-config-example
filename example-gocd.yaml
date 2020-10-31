@@ -2,10 +2,10 @@ format_version: 9
 environments:
   default:
     pipelines:
-      - example
+      - gocd-yaml-config-example
 pipelines:
-  example:
-    group: example
+  gocd-yaml-config-example:
+    group: gocd-example
     materials:
       git:
         git: https://github.com/showerlee/gocd-yaml-config-example.git
