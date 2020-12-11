@@ -20,7 +20,7 @@ pipelines:
             app:
               tasks:
                - exec:
-                   command: auto/build-base-image
+                   command: auto/build-app-image
 
       - release:
           clean_workspace: yes
