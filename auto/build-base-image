@@ -3,4 +3,4 @@
 cd $(dirname $0)/..
 source ./auto/set-env-vars
 
-display_status "Base image build is complete"
+display_status "Base image build is complete!!!"
